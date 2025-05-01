@@ -1,0 +1,846 @@
+[
+    {
+        "db_id": "california_schools",
+        "table_names_original": [
+            "frpm",
+            "satscores",
+            "schools"
+        ],
+        "table_names": [
+            "free and reduced-price meals",
+            "satscores",
+            "schools"
+        ],
+        "column_names_original": [
+            [
+                -1,
+                "*"
+            ],
+            [
+                0,
+                "CDSCode"
+            ],
+            [
+                0,
+                "Academic Year"
+            ],
+            [
+                0,
+                "County Code"
+            ],
+            [
+                0,
+                "District Code"
+            ],
+            [
+                0,
+                "School Code"
+            ],
+            [
+                0,
+                "County Name"
+            ],
+            [
+                0,
+                "District Name"
+            ],
+            [
+                0,
+                "School Name"
+            ],
+            [
+                0,
+                "District Type"
+            ],
+            [
+                0,
+                "School Type"
+            ],
+            [
+                0,
+                "Educational Option Type"
+            ],
+            [
+                0,
+                "NSLP Provision Status"
+            ],
+            [
+                0,
+                "Charter School (Y/N)"
+            ],
+            [
+                0,
+                "Charter School Number"
+            ],
+            [
+                0,
+                "Charter Funding Type"
+            ],
+            [
+                0,
+                "IRC"
+            ],
+            [
+                0,
+                "Low Grade"
+            ],
+            [
+                0,
+                "High Grade"
+            ],
+            [
+                0,
+                "Enrollment (K-12)"
+            ],
+            [
+                0,
+                "Free Meal Count (K-12)"
+            ],
+            [
+                0,
+                "Percent (%) Eligible Free (K-12)"
+            ],
+            [
+                0,
+                "FRPM Count (K-12)"
+            ],
+            [
+                0,
+                "Percent (%) Eligible FRPM (K-12)"
+            ],
+            [
+                0,
+                "Enrollment (Ages 5-17)"
+            ],
+            [
+                0,
+                "Free Meal Count (Ages 5-17)"
+            ],
+            [
+                0,
+                "Percent (%) Eligible Free (Ages 5-17)"
+            ],
+            [
+                0,
+                "FRPM Count (Ages 5-17)"
+            ],
+            [
+                0,
+                "Percent (%) Eligible FRPM (Ages 5-17)"
+            ],
+            [
+                0,
+                "2013-14 CALPADS Fall 1 Certification Status"
+            ],
+            [
+                1,
+                "cds"
+            ],
+            [
+                1,
+                "rtype"
+            ],
+            [
+                1,
+                "sname"
+            ],
+            [
+                1,
+                "dname"
+            ],
+            [
+                1,
+                "cname"
+            ],
+            [
+                1,
+                "enroll12"
+            ],
+            [
+                1,
+                "NumTstTakr"
+            ],
+            [
+                1,
+                "AvgScrRead"
+            ],
+            [
+                1,
+                "AvgScrMath"
+            ],
+            [
+                1,
+                "AvgScrWrite"
+            ],
+            [
+                1,
+                "NumGE1500"
+            ],
+            [
+                2,
+                "CDSCode"
+            ],
+            [
+                2,
+                "NCESDist"
+            ],
+            [
+                2,
+                "NCESSchool"
+            ],
+            [
+                2,
+                "StatusType"
+            ],
+            [
+                2,
+                "County"
+            ],
+            [
+                2,
+                "District"
+            ],
+            [
+                2,
+                "School"
+            ],
+            [
+                2,
+                "Street"
+            ],
+            [
+                2,
+                "StreetAbr"
+            ],
+            [
+                2,
+                "City"
+            ],
+            [
+                2,
+                "Zip"
+            ],
+            [
+                2,
+                "State"
+            ],
+            [
+                2,
+                "MailStreet"
+            ],
+            [
+                2,
+                "MailStrAbr"
+            ],
+            [
+                2,
+                "MailCity"
+            ],
+            [
+                2,
+                "MailZip"
+            ],
+            [
+                2,
+                "MailState"
+            ],
+            [
+                2,
+                "Phone"
+            ],
+            [
+                2,
+                "Ext"
+            ],
+            [
+                2,
+                "Website"
+            ],
+            [
+                2,
+                "OpenDate"
+            ],
+            [
+                2,
+                "ClosedDate"
+            ],
+            [
+                2,
+                "Charter"
+            ],
+            [
+                2,
+                "CharterNum"
+            ],
+            [
+                2,
+                "FundingType"
+            ],
+            [
+                2,
+                "DOC"
+            ],
+            [
+                2,
+                "DOCType"
+            ],
+            [
+                2,
+                "SOC"
+            ],
+            [
+                2,
+                "SOCType"
+            ],
+            [
+                2,
+                "EdOpsCode"
+            ],
+            [
+                2,
+                "EdOpsName"
+            ],
+            [
+                2,
+                "EILCode"
+            ],
+            [
+                2,
+                "EILName"
+            ],
+            [
+                2,
+                "GSoffered"
+            ],
+            [
+                2,
+                "GSserved"
+            ],
+            [
+                2,
+                "Virtual"
+            ],
+            [
+                2,
+                "Magnet"
+            ],
+            [
+                2,
+                "Latitude"
+            ],
+            [
+                2,
+                "Longitude"
+            ],
+            [
+                2,
+                "AdmFName1"
+            ],
+            [
+                2,
+                "AdmLName1"
+            ],
+            [
+                2,
+                "AdmEmail1"
+            ],
+            [
+                2,
+                "AdmFName2"
+            ],
+            [
+                2,
+                "AdmLName2"
+            ],
+            [
+                2,
+                "AdmEmail2"
+            ],
+            [
+                2,
+                "AdmFName3"
+            ],
+            [
+                2,
+                "AdmLName3"
+            ],
+            [
+                2,
+                "AdmEmail3"
+            ],
+            [
+                2,
+                "LastUpdate"
+            ]
+        ],
+        "column_names": [
+            [
+                -1,
+                "*"
+            ],
+            [
+                0,
+                "CDSCode"
+            ],
+            [
+                0,
+                "Academic Year"
+            ],
+            [
+                0,
+                "County Code"
+            ],
+            [
+                0,
+                "District Code"
+            ],
+            [
+                0,
+                "School Code"
+            ],
+            [
+                0,
+                "County Name"
+            ],
+            [
+                0,
+                "District Name"
+            ],
+            [
+                0,
+                "School Name"
+            ],
+            [
+                0,
+                "District Type"
+            ],
+            [
+                0,
+                "School Type"
+            ],
+            [
+                0,
+                "Educational Option Type"
+            ],
+            [
+                0,
+                "NSLP Provision Status"
+            ],
+            [
+                0,
+                "Charter School (Y/N)"
+            ],
+            [
+                0,
+                "Charter School Number"
+            ],
+            [
+                0,
+                "Charter Funding Type"
+            ],
+            [
+                0,
+                "IRC"
+            ],
+            [
+                0,
+                "Low Grade"
+            ],
+            [
+                0,
+                "High Grade"
+            ],
+            [
+                0,
+                "Enrollment (K-12)"
+            ],
+            [
+                0,
+                "Free Meal Count (K-12)"
+            ],
+            [
+                0,
+                "Percent (%) Eligible Free (K-12)"
+            ],
+            [
+                0,
+                "FRPM Count (K-12)"
+            ],
+            [
+                0,
+                "Percent (%) Eligible FRPM (K-12)"
+            ],
+            [
+                0,
+                "Enrollment (Ages 5-17)"
+            ],
+            [
+                0,
+                "Free Meal Count (Ages 5-17)"
+            ],
+            [
+                0,
+                "Percent (%) Eligible Free (Ages 5-17)"
+            ],
+            [
+                0,
+                "FRPM Count (Ages 5-17)"
+            ],
+            [
+                0,
+                "Percent (%) Eligible FRPM (Ages 5-17)"
+            ],
+            [
+                0,
+                "2013-14 CALPADS Fall 1 Certification Status"
+            ],
+            [
+                1,
+                "cds"
+            ],
+            [
+                1,
+                "rtype"
+            ],
+            [
+                1,
+                "school name"
+            ],
+            [
+                1,
+                "district name"
+            ],
+            [
+                1,
+                "county name"
+            ],
+            [
+                1,
+                "enrollment (1st-12nd grade)"
+            ],
+            [
+                1,
+                "Number of Test Takers"
+            ],
+            [
+                1,
+                "average scores in Reading"
+            ],
+            [
+                1,
+                "average scores in Math"
+            ],
+            [
+                1,
+                "average scores in writing"
+            ],
+            [
+                1,
+                "Number of Test Takers Whose Total SAT Scores Are Greater or Equal to 1500"
+            ],
+            [
+                2,
+                "CDSCode"
+            ],
+            [
+                2,
+                "National Center for Educational Statistics school district identification number"
+            ],
+            [
+                2,
+                "National Center for Educational Statistics school identification number"
+            ],
+            [
+                2,
+                "StatusType"
+            ],
+            [
+                2,
+                "County"
+            ],
+            [
+                2,
+                "District"
+            ],
+            [
+                2,
+                "School"
+            ],
+            [
+                2,
+                "Street"
+            ],
+            [
+                2,
+                "street address"
+            ],
+            [
+                2,
+                "City"
+            ],
+            [
+                2,
+                "Zip"
+            ],
+            [
+                2,
+                "State"
+            ],
+            [
+                2,
+                "Mail Street"
+            ],
+            [
+                2,
+                "mailing street address"
+            ],
+            [
+                2,
+                "mailing city"
+            ],
+            [
+                2,
+                "mailing zip"
+            ],
+            [
+                2,
+                "mailing state"
+            ],
+            [
+                2,
+                "Phone"
+            ],
+            [
+                2,
+                "extension"
+            ],
+            [
+                2,
+                "Website"
+            ],
+            [
+                2,
+                "OpenDate"
+            ],
+            [
+                2,
+                "ClosedDate"
+            ],
+            [
+                2,
+                "Charter"
+            ],
+            [
+                2,
+                "CharterNum"
+            ],
+            [
+                2,
+                "FundingType"
+            ],
+            [
+                2,
+                "District Ownership Code"
+            ],
+            [
+                2,
+                "The District Ownership Code Type"
+            ],
+            [
+                2,
+                "School Ownership Code"
+            ],
+            [
+                2,
+                "School Ownership Code Type"
+            ],
+            [
+                2,
+                "Education Option Code"
+            ],
+            [
+                2,
+                "Educational Option Name"
+            ],
+            [
+                2,
+                "Educational Instruction Level Code"
+            ],
+            [
+                2,
+                "Educational Instruction Level Name"
+            ],
+            [
+                2,
+                "grade span offered"
+            ],
+            [
+                2,
+                "grade span served."
+            ],
+            [
+                2,
+                "Virtual"
+            ],
+            [
+                2,
+                "Magnet"
+            ],
+            [
+                2,
+                "Latitude"
+            ],
+            [
+                2,
+                "Longitude"
+            ],
+             [
+                2,
+                "administrator's first name 1"
+            ],
+            [
+                2,
+                "administrator's last name 1"
+            ],
+            [
+                2,
+                "administrator's email address 1"
+            ],
+            [
+                2,
+                "administrator's first name 2"
+            ],
+            [
+                2,
+                "administrator's last name 2"
+            ],
+            [
+                2,
+                "administrator's email address 2"
+            ],
+            [
+                2,
+                "administrator's first name 3"
+            ],
+            [
+                2,
+                "administrator's last name 3"
+            ],
+            [
+                2,
+                "administrator's email address 3"
+            ],
+            [
+                2,
+                "Last Update"
+            ]
+        ],
+        "column_types": [
+            "text",
+            "text",
+            "text",
+            "text",
+            "integer",
+            "text",
+            "text",
+            "text",
+            "text",
+            "text",
+            "text",
+            "text",
+            "text",
+            "integer",
+            "text",
+            "text",
+            "integer",
+            "text",
+            "text",
+            "real",
+            "real",
+            "real",
+            "real",
+            "real",
+            "real",
+            "real",
+            "real",
+            "real",
+            "real",
+            "integer",
+            "text",
+            "text",
+            "text",
+            "text",
+            "text",
+            "integer",
+            "integer",
+            "integer",
+            "integer",
+            "integer",
+            "integer",
+            "text",
+            "text",
+            "text",
+            "text",
+            "text",
+            "text",
+            "text",
+            "text",
+            "text",
+            "text",
+            "text",
+            "text",
+            "text",
+            "text",
+            "text",
+            "text",
+            "text",
+            "text",
+            "text",
+            "text",
+            "date",
+            "date",
+            "integer",
+            "text",
+            "text",
+            "text",
+            "text",
+            "text",
+            "text",
+            "text",
+            "text",
+            "text",
+            "text",
+            "text",
+            "text",
+            "text",
+            "integer",
+            "real",
+            "real",
+            "text",
+            "text",
+            "text",
+            "text",
+            "text",
+            "text",
+            "text",
+            "text",
+            "text",
+            "date"
+        ],
+        "primary_keys": [
+            1,
+            30,
+            41
+        ],
+        "foreign_keys": [
+            [
+                1,
+                41
+            ],
+            [
+                30,
+                41
+            ]
+        ]
+    }
+]
