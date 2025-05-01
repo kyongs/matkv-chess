@@ -1,0 +1,88 @@
+[
+    {
+        "tool_name": "extract_keywords",
+        "keywords": [
+            "highest eligible free rate",
+            "K-12 students",
+            "schools",
+            "Alameda County",
+            "Free Meal Count (K-12)",
+            "Enrollment (K-12)"
+        ],
+        "status": "success",
+        "execution_time": 1.1
+    },
+    {
+        "tool_name": "retrieve_entity",
+        "similar_columns": {
+            "schools": [
+                "County",
+                "School"
+            ],
+            "frpm": [
+                "Enrollment (K-12)",
+                "Free Meal Count (K-12)"
+            ]
+        },
+        "schema_with_examples": {
+            "schools": {
+                "School": [
+                    "Alameda County Community",
+                    "Alameda High"
+                ],
+                "GSserved": [
+                    "K-12"
+                ],
+                "GSoffered": [
+                    "K-12"
+                ],
+                "AdmLName1": [
+                    "Free"
+                ],
+                "MailCity": [
+                    "Alameda"
+                ],
+                "District": [
+                    "Alameda County Office of Education"
+                ],
+                "County": [
+                    "Alameda"
+                ],
+                "City": [
+                    "Alameda"
+                ]
+            },
+            "frpm": {
+                "School Name": [
+                    "Alameda County Community",
+                    "Alameda High"
+                ],
+                "District Name": [
+                    "Alameda County Office of Education"
+                ],
+                "County Name": [
+                    "Alameda"
+                ]
+            },
+            "satscores": {
+                "cname": [
+                    "Alameda"
+                ],
+                "sname": [
+                    "Alameda High"
+                ],
+                "dname": [
+                    "Alameda Unified"
+                ]
+            }
+        },
+        "status": "success",
+        "execution_time": 8.4
+    },
+    {
+        "tool_name": "retrieve_context",
+        "status": "error",
+        "error": "<class 'Exception'>: <Error loading Vector DB for california_schools>",
+        "execution_time": 0.1
+    }
+]

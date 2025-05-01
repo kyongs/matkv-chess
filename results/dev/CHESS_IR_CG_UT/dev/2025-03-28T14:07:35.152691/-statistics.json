@@ -1,0 +1,22 @@
+{
+    "counts": {
+        "final_SQL": {
+            "correct": 1,
+            "incorrect": 0,
+            "error": 0,
+            "total": 1
+        }
+    },
+    "ids": {
+        "final_SQL": {
+            "correct": [
+                [
+                    "california_schools",
+                    0
+                ]
+            ],
+            "incorrect": [],
+            "error": []
+        }
+    }
+}

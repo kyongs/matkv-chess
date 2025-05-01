@@ -1,0 +1,7 @@
+{
+    "0": "SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM `frpm` WHERE `County Name` = 'Alameda'\t----- bird -----\tcalifornia_schools",
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0
+}

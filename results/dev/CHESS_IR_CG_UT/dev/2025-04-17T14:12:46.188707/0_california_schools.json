@@ -1,0 +1,326 @@
+[
+    {
+        "tool_name": "extract_keywords",
+        "keywords": [
+            "highest eligible free rate",
+            "K-12 students",
+            "schools",
+            "Alameda County",
+            "Free Meal Count (K-12)",
+            "Enrollment (K-12)"
+        ],
+        "status": "success",
+        "execution_time": 1.0
+    },
+    {
+        "tool_name": "retrieve_entity",
+        "similar_columns": {
+            "schools": [
+                "School",
+                "County"
+            ],
+            "frpm": [
+                "Free Meal Count (K-12)",
+                "Enrollment (K-12)"
+            ]
+        },
+        "schema_with_examples": {
+            "frpm": {
+                "School Name": [
+                    "Alameda County Community",
+                    "Alameda High"
+                ],
+                "County Name": [
+                    "Alameda"
+                ],
+                "District Name": [
+                    "Alameda Unified"
+                ]
+            },
+            "schools": {
+                "School": [
+                    "Alameda County Community",
+                    "Alameda High"
+                ],
+                "GSserved": [
+                    "K-12"
+                ],
+                "GSoffered": [
+                    "K-12"
+                ],
+                "AdmLName1": [
+                    "Free"
+                ],
+                "County": [
+                    "Alameda"
+                ],
+                "City": [
+                    "Alameda"
+                ],
+                "MailCity": [
+                    "Alameda"
+                ]
+            },
+            "satscores": {
+                "dname": [
+                    "Alameda County Office of Education"
+                ],
+                "cname": [
+                    "Alameda"
+                ],
+                "sname": [
+                    "Alameda High"
+                ]
+            }
+        },
+        "status": "success",
+        "execution_time": 14.8
+    },
+    {
+        "tool_name": "retrieve_context",
+        "status": "error",
+        "error": "<class 'Exception'>: <Error loading Vector DB for california_schools>",
+        "execution_time": 0.1
+    },
+    {
+        "tool_name": "generate_candidate",
+        "node_type": "generate_candidate",
+        "generation_based_candidates": [
+            {
+                "template_name": "generate_candidate_one",
+                "candidates": [
+                    " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM `frpm` WHERE `County Name` = 'Alameda' ",
+                    " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM `frpm` WHERE `County Name` = 'Alameda' ",
+                    " SELECT MAX(T1.`Free Meal Count (K-12)` / T1.`Enrollment (K-12)`) FROM frpm AS T1 INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode WHERE T2.County = 'Alameda' ",
+                    " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM frpm WHERE `County Name` = 'Alameda' ",
+                    " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM `frpm` WHERE `County` = 'Alameda' ",
+                    " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM `frpm` WHERE `County Name` = 'Alameda' ",
+                    " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM `frpm` WHERE `County` = 'Alameda' ",
+                    " SELECT MAX(T1.`Free Meal Count (K-12)` / T1.`Enrollment (K-12)`) FROM frpm AS T1 INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode WHERE T2.County = 'Alameda' ",
+                    " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM `schools` WHERE `County` = 'Alameda' AND `Enrollment (K-12)` > 0 ",
+                    " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM frpm AS T1 INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode WHERE T2.County = 'Alameda' AND `Enrollment (K-12)` > 0 "
+                ]
+            },
+            {
+                "template_name": "generate_candidate_two",
+                "candidates": [
+                    " SELECT MAX(CASE WHEN `Enrollment (K-12)` > 0 THEN `Free Meal Count (K-12)` / `Enrollment (K-12)` END) AS HighestEligibleFreeRate  FROM frpm AS T1  INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode  WHERE T2.County = 'Alameda' ",
+                    " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) AS highest_free_rate  FROM frpm AS T1  INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode  WHERE T2.County = 'Alameda' ",
+                    " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) AS HighestEligibleFreeRate FROM frpm WHERE `County Name` = 'Alameda' AND `Enrollment (K-12)` > 0 ",
+                    " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) AS highest_free_rate FROM frpm WHERE `County Name` = 'Alameda' AND `Enrollment (K-12)` IS NOT NULL AND `Free Meal Count (K-12)` IS NOT NULL ",
+                    " SELECT MAX(`FRPM Count (K-12)` / `Enrollment (K-12)`) AS HighestEligibleFreeRate  FROM frpm AS T1  INNER JOIN schools AS T2 ON T1.`School Code` = T2.CDSCode  WHERE T2.County = 'Alameda' ",
+                    " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) AS highest_free_rate FROM frpm WHERE `County Name` = 'Alameda' AND `Enrollment (K-12)` > 0 ",
+                    " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) AS HighestEligibleFreeRate  FROM frpm AS T1  INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode  WHERE T2.County = 'Alameda' AND `Enrollment (K-12)` IS NOT NULL ",
+                    " SELECT MAX(`FRPM Count (K-12)` / `Enrollment (K-12)`) AS highest_free_rate  FROM frpm AS F  INNER JOIN schools AS S ON F.CDSCode = S.CDSCode  WHERE S.County = 'Alameda' AND `Enrollment (K-12)` > 0 ",
+                    " SELECT MAX((`Free Meal Count (K-12)` / `Enrollment (K-12)`)) AS highest_eligible_free_rate  FROM frpm AS T1  INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode  WHERE T2.County = 'Alameda' AND `Enrollment (K-12)` > 0 ",
+                    " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`)  FROM frpm  WHERE `County Name` = 'Alameda' AND `Enrollment (K-12)` IS NOT NULL AND `Free Meal Count (K-12)` IS NOT NULL "
+                ]
+            }
+        ],
+        "candidates": [
+            {
+                "chain_of_thought_reasoning": "",
+                "SQL": " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM `frpm` WHERE `County Name` = 'Alameda' ",
+                "plan": "**Question**: What is the highest eligible free rate for K-12 students in the schools in Alameda County?  \n**Evidence**: Eligible free rate for K-12 = `Free Meal Count (K-12)` / `Enrollment (K-12)`\n\n**1. Divide and Conquer:**\n\n* **Main Question:** What is the highest eligible free rate for K-12 students in the schools in Alameda County? \n    * **Analysis:** The question requires us to calculate the eligible free rate for K-12 students, which is the ratio of `Free Meal Count (K-12)` to `Enrollment (K-12)`. We need to filter the results to only include schools located in Alameda County.\n    * **Pseudo SQL:** SELECT MAX(`Eligible Free Rate`) FROM (SELECT (`Free Meal Count (K-12)` / `Enrollment (K-12)`) AS `Eligible Free Rate` FROM `frpm` WHERE <condition for Alameda County>)\n\n    * **Sub-question 1:** condition for Alameda County\n        * **Analysis:** We need to filter schools based on the `County Name` column in the `frpm` table. Since the county name for Alameda is provided in the evidence, we will use it in our condition.\n        * **Pseudo SQL:** `County Name` = 'Alameda'\n\n**2. Assembling SQL:**\n\n* **Sub-question 1 (condition for Alameda County):**\n    * **SQL:** `County Name` = 'Alameda'\n\n* **Main Question (highest eligible free rate):**\n    * **SQL:** SELECT MAX(`Eligible Free Rate`) FROM (SELECT (`Free Meal Count (K-12)` / `Enrollment (K-12)`) AS `Eligible Free Rate` FROM `frpm` WHERE `County Name` = 'Alameda')\n\n**3. Simplification and Optimization:**\n\n* The SQL query in step 2 is already efficient. We are calculating the eligible free rate and then using `MAX()` to find the highest rate for schools in Alameda County.\n\n**Final Optimized SQL Query:**\n\n"
+            },
+            {
+                "chain_of_thought_reasoning": "",
+                "SQL": " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM `frpm` WHERE `County Name` = 'Alameda' ",
+                "plan": "**Question**: What is the highest eligible free rate for K-12 students in the schools in Alameda County?  \n**Evidence**: Eligible free rate for K-12 = `Free Meal Count (K-12)` / `Enrollment (K-12)`\n\n**1. Divide and Conquer:**\n\n* **Main Question:** What is the highest eligible free rate for K-12 students in the schools in Alameda County? \n    * **Analysis:** We need to calculate the eligible free rate for K-12 students and find the maximum rate. The calculation involves dividing `Free Meal Count (K-12)` by `Enrollment (K-12)`. We will filter the results to include only schools located in Alameda County.\n    * **Pseudo SQL:** SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM `frpm` WHERE <schools in Alameda County>\n\n    * **Sub-question 1:** schools in Alameda County\n        * **Analysis:** This involves filtering the `frpm` table by the `County Name` to ensure we only consider schools in Alameda County.\n        * **Pseudo SQL:** `County Name` = 'Alameda'\n\n**2. Assembling SQL:**\n\n* **Sub-question 1 (schools in Alameda County):**\n    * **SQL:** `County Name` = 'Alameda'\n\n* **Main Question (maximum eligible free rate):**\n    * **SQL:** SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM `frpm` WHERE `County Name` = 'Alameda'\n\n**3. Simplification and Optimization:**\n\n* The SQL query is straightforward and efficiently retrieves the highest eligible free rate by directly applying the filter for Alameda County.\n\n**Final Optimized SQL Query:**\n\n"
+            },
+            {
+                "chain_of_thought_reasoning": "",
+                "SQL": " SELECT MAX(T1.`Free Meal Count (K-12)` / T1.`Enrollment (K-12)`) FROM frpm AS T1 INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode WHERE T2.County = 'Alameda' ",
+                "plan": "**Question**: What is the highest eligible free rate for K-12 students in the schools in Alameda County?  \n**Evidence**: Eligible free rate for K-12 = `Free Meal Count (K-12)` / `Enrollment (K-12)`\n\n**1. Divide and Conquer:**\n\n* **Main Question:** What is the highest eligible free rate for K-12 students in the schools in Alameda County? \n    * **Analysis:** We need to calculate the eligible free rate and then find the maximum of this rate for K-12 students specifically in Alameda County. This requires us to join the `frpm` and `schools` tables to filter by county and perform the calculation.\n    * **Pseudo SQL:** SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM `frpm` AS `T1` INNER JOIN `schools` AS `T2` ON `T1`.`CDSCode` = `T2`.`CDSCode` WHERE `T2`.`County` = 'Alameda'\n\n    * **Sub-question 1:** Calculate eligible free rate for K-12 students\n        * **Analysis:** This is a straightforward calculation using the columns `Free Meal Count (K-12)` and `Enrollment (K-12)`.\n        * **Pseudo SQL:** `eligible_free_rate` = `Free Meal Count (K-12)` / `Enrollment (K-12)`\n\n    * **Sub-question 2:** Filter for schools in Alameda County\n        * **Analysis:** This is a simple filter applied to the `County` column in the `schools` table.\n        * **Pseudo SQL:** `T2`.`County` = 'Alameda'\n\n**2. Assembling SQL:**\n\n* **Sub-question 1 (eligible free rate for K-12 students):**\n    * **SQL:** `T1`.`Free Meal Count (K-12)` / `T1`.`Enrollment (K-12)`\n\n* **Sub-question 2 (filter for schools in Alameda County):**\n    * **SQL:** `T2`.`County` = 'Alameda'\n\n* **Main Question (highest eligible free rate):**\n    * **SQL:** SELECT MAX(`T1`.`Free Meal Count (K-12)` / `T1`.`Enrollment (K-12)`) FROM `frpm` AS `T1` INNER JOIN `schools` AS `T2` ON `T1`.`CDSCode` = `T2`.`CDSCode` WHERE `T2`.`County` = 'Alameda'\n\n**3. Simplification and Optimization:**\n\n* The SQL query from step 2 is already efficient, using `INNER JOIN` to combine the necessary tables and applying the required filters directly in the `WHERE` clause.\n\n**Final Optimized SQL Query:**\n\n"
+            },
+            {
+                "chain_of_thought_reasoning": "",
+                "SQL": " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM frpm WHERE `County Name` = 'Alameda' ",
+                "plan": "**Question**: What is the highest eligible free rate for K-12 students in the schools in Alameda County?  \n**Evidence**: Eligible free rate for K-12 = `Free Meal Count (K-12)` / `Enrollment (K-12)`\n\n**1. Divide and Conquer:**\n\n* **Main Question:** What is the highest eligible free rate for K-12 students in the schools in Alameda County? \n    * **Analysis:** The question asks for the maximum eligible free rate, which can be calculated as the ratio of `Free Meal Count (K-12)` to `Enrollment (K-12)`. We need to filter the results to only include schools located in Alameda County.\n    * **Pseudo SQL:** SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM `frpm` WHERE <schools in Alameda County>\n\n    * **Sub-question 1:** schools in Alameda County\n        * **Analysis:** We need to filter the `frpm` table based on the `County Name` column to only include entries for Alameda County.\n        * **Pseudo SQL:** `County Name` = 'Alameda'\n\n**2. Assembling SQL:**\n\n* **Sub-question 1 (schools in Alameda County):**\n    * **SQL:** `County Name` = 'Alameda'\n\n* **Main Question (highest eligible free rate):**\n    * **SQL:** SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM `frpm` WHERE `County Name` = 'Alameda'\n\n**3. Simplification and Optimization:**\n\n* The SQL query is already efficient since it directly computes the maximum ratio while filtering based on the county condition.\n\n**Final Optimized SQL Query:**\n\n"
+            },
+            {
+                "chain_of_thought_reasoning": "",
+                "SQL": " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM `frpm` WHERE `County` = 'Alameda' ",
+                "plan": "**Question**: What is the highest eligible free rate for K-12 students in the schools in Alameda County?  \n**Evidence**: Eligible free rate for K-12 = `Free Meal Count (K-12)` / `Enrollment (K-12)`\n\n**1. Divide and Conquer:**\n\n* **Main Question:** What is the highest eligible free rate for K-12 students in the schools in Alameda County? \n    * **Analysis:** The eligible free rate is calculated as the ratio of `Free Meal Count (K-12)` to `Enrollment (K-12)`. We need to filter the results to only include schools located in Alameda County.\n    * **Pseudo SQL:** SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM `frpm` AS `T1` WHERE <schools in Alameda County>\n\n    * **Sub-question 1:** schools in Alameda County\n        * **Analysis:** We need to filter the `frpm` table based on the `County` column to ensure we are only including schools in Alameda County.\n        * **Pseudo SQL:** `T1`.`County` = 'Alameda'\n\n**2. Assembling SQL:**\n\n* **Sub-question 1 (schools in Alameda County):**\n    * **SQL:** `T1`.`County` = 'Alameda'\n\n* **Main Question (highest eligible free rate):**\n    * **SQL:** SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM `frpm` AS `T1` WHERE `T1`.`County` = 'Alameda'\n\n**3. Simplification and Optimization:**\n\n* The SQL query is already efficient, directly using the `MAX` function on the calculated eligible free rate while filtering for schools in Alameda County.\n\n**Final Optimized SQL Query:**\n\n"
+            },
+            {
+                "chain_of_thought_reasoning": "",
+                "SQL": " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM `frpm` WHERE `County Name` = 'Alameda' ",
+                "plan": "**Question**: What is the highest eligible free rate for K-12 students in the schools in Alameda County?  \n**Evidence**: Eligible free rate for K-12 = `Free Meal Count (K-12)` / `Enrollment (K-12)`\n\n**1. Divide and Conquer:**\n\n* **Main Question:** What is the highest eligible free rate for K-12 students in the schools in Alameda County?\n    * **Analysis:** We need to calculate the eligible free rate for K-12 students and find the maximum rate. This requires filtering the data to include only schools in Alameda County and performing a calculation involving two columns: `Free Meal Count (K-12)` and `Enrollment (K-12)`.\n    * **Pseudo SQL:** SELECT MAX(`Eligible Free Rate`) FROM (SELECT `Free Meal Count (K-12)` / `Enrollment (K-12)` AS `Eligible Free Rate` FROM `frpm` WHERE `County Name` = 'Alameda')\n\n    * **Sub-question 1:** Calculate eligible free rate for K-12 students\n        * **Analysis:** This involves a straightforward calculation of `Free Meal Count (K-12)` divided by `Enrollment (K-12)`.\n        * **Pseudo SQL:** `Free Meal Count (K-12)` / `Enrollment (K-12)`\n\n    * **Sub-question 2:** Filter schools in Alameda County\n        * **Analysis:** This is a simple filter condition on the `County Name` column in the `frpm` table.\n        * **Pseudo SQL:** `County Name` = 'Alameda'\n\n**2. Assembling SQL:**\n\n* **Sub-question 1 (eligible free rate calculation):**\n    * **SQL:** `Free Meal Count (K-12)` / `Enrollment (K-12) AS Eligible Free Rate`\n\n* **Sub-question 2 (filter for Alameda County):**\n    * **SQL:** `County Name` = 'Alameda'\n\n* **Main Question (highest eligible free rate):**\n    * **SQL:** SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM `frpm` WHERE `County Name` = 'Alameda'\n\n**3. Simplification and Optimization:**\n\n* The SQL query is already efficient as it uses a single table and directly calculates the maximum eligible free rate for the specified county.\n\n**Final Optimized SQL Query:**\n\n"
+            },
+            {
+                "chain_of_thought_reasoning": "",
+                "SQL": " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM `frpm` WHERE `County` = 'Alameda' ",
+                "plan": "**Question**: What is the highest eligible free rate for K-12 students in the schools in Alameda County?  \n**Evidence**: Eligible free rate for K-12 = `Free Meal Count (K-12)` / `Enrollment (K-12)`\n\n**1. Divide and Conquer:**\n\n* **Main Question:** What is the highest eligible free rate for K-12 students in the schools in Alameda County?\n    * **Analysis:** The question requires us to calculate the ratio of `Free Meal Count (K-12)` to `Enrollment (K-12)` for schools located in Alameda County and find the maximum of these rates.\n    * **Pseudo SQL:** SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM `frpm` WHERE <schools are in Alameda County>\n\n    * **Sub-question 1:** schools are in Alameda County\n        * **Analysis:** We need to filter the records in the `frpm` table where the `County` is 'Alameda'.\n        * **Pseudo SQL:** `County` = 'Alameda'\n\n**2. Assembling SQL:**\n\n* **Sub-question 1 (schools are in Alameda County):**\n    * **SQL:** `County` = 'Alameda'\n\n* **Main Question (highest eligible free rate):**\n    * **SQL:** SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM `frpm` WHERE `County` = 'Alameda'\n\n**3. Simplification and Optimization:**\n\n* The SQL query from step 2 is already efficient. We are directly calculating the maximum eligible free rate for K-12 students based on the conditions provided.\n\n**Final Optimized SQL Query:**\n\n"
+            },
+            {
+                "chain_of_thought_reasoning": "",
+                "SQL": " SELECT MAX(T1.`Free Meal Count (K-12)` / T1.`Enrollment (K-12)`) FROM frpm AS T1 INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode WHERE T2.County = 'Alameda' ",
+                "plan": "**Question**: What is the highest eligible free rate for K-12 students in the schools in Alameda County?  \n**Evidence**: Eligible free rate for K-12 = `Free Meal Count (K-12)` / `Enrollment (K-12)`\n\n**1. Divide and Conquer:**\n\n* **Main Question:** What is the highest eligible free rate for K-12 students in the schools in Alameda County? \n    * **Analysis:** We need to calculate the eligible free rate for K-12 students and then find the maximum of these rates. The eligible free rate is calculated using the `Free Meal Count (K-12)` and `Enrollment (K-12)` from the `frpm` table. We also need to filter the results to only include schools located in Alameda County, which can be identified in the `schools` table.\n    * **Pseudo SQL:** SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM `frpm` AS `T1` INNER JOIN `schools` AS `T2` ON `T1`.`CDSCode` = `T2`.`CDSCode` WHERE `T2`.`County` = 'Alameda'\n\n    * **Sub-question 1:** Calculate eligible free rate for K-12 students\n        * **Analysis:** This is a straightforward calculation using the columns from the `frpm` table.\n        * **Pseudo SQL:** `T1`.`Free Meal Count (K-12)` / `T1`.`Enrollment (K-12)`\n\n    * **Sub-question 2:** Filter for schools in Alameda County\n        * **Analysis:** This can be done by filtering the `County` column in the `schools` table.\n        * **Pseudo SQL:** `T2`.`County` = 'Alameda'\n\n**2. Assembling SQL:**\n\n* **Sub-question 1 (eligible free rate for K-12 students):**\n    * **SQL:** `T1`.`Free Meal Count (K-12)` / `T1`.`Enrollment (K-12)`\n\n* **Sub-question 2 (schools in Alameda County):**\n    * **SQL:** `T2`.`County` = 'Alameda'\n\n* **Main Question (highest eligible free rate):**\n    * **SQL:** SELECT MAX(`T1`.`Free Meal Count (K-12)` / `T1`.`Enrollment (K-12)`) FROM `frpm` AS `T1` INNER JOIN `schools` AS `T2` ON `T1`.`CDSCode` = `T2`.`CDSCode` WHERE `T2`.`County` = 'Alameda'\n\n**3. Simplification and Optimization:**\n\n* The SQL query is already efficient as it uses an `INNER JOIN` to connect the `frpm` and `schools` tables based on the `CDSCode`. The `WHERE` clause effectively filters for the relevant county. \n\n**Final Optimized SQL Query:**\n\n"
+            },
+            {
+                "chain_of_thought_reasoning": "",
+                "SQL": " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM `schools` WHERE `County` = 'Alameda' AND `Enrollment (K-12)` > 0 ",
+                "plan": "**Question**: What is the highest eligible free rate for K-12 students in the schools in Alameda County?  \n**Evidence**: Eligible free rate for K-12 = `Free Meal Count (K-12)` / `Enrollment (K-12)`\n\n**1. Divide and Conquer:**\n\n* **Main Question:** What is the highest eligible free rate for K-12 students in the schools in Alameda County? \n    * **Analysis:** We need to calculate the eligible free rate using the formula provided and then find the maximum of that rate for schools located in Alameda County.\n    * **Pseudo SQL:** SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM `schools` WHERE <schools in Alameda County>\n\n    * **Sub-question 1:** schools in Alameda County\n        * **Analysis:** This refers to a filter on the `County` column in the `schools` table.\n        * **Pseudo SQL:** `County` = 'Alameda'\n\n**2. Assembling SQL:**\n\n* **Sub-question 1 (schools in Alameda County):**\n    * **SQL:** `County` = 'Alameda'\n\n* **Main Question (maximum eligible free rate):**\n    * **SQL:** SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM `schools` WHERE `County` = 'Alameda' AND `Enrollment (K-12)` > 0\n\n**3. Simplification and Optimization:**\n\n* We have ensured that we only calculate the rate where `Enrollment (K-12)` is greater than 0 to avoid division by zero. The SQL query is already efficient and straightforward.\n\n**Final Optimized SQL Query:**\n\n"
+            },
+            {
+                "chain_of_thought_reasoning": "",
+                "SQL": " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM frpm AS T1 INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode WHERE T2.County = 'Alameda' AND `Enrollment (K-12)` > 0 ",
+                "plan": "**Question**: What is the highest eligible free rate for K-12 students in the schools in Alameda County?  \n**Evidence**: Eligible free rate for K-12 = `Free Meal Count (K-12)` / `Enrollment (K-12)`\n\n**1. Divide and Conquer:**\n\n* **Main Question:** What is the highest eligible free rate for K-12 students in the schools in Alameda County?\n    * **Analysis:** We need to calculate the eligible free rate for K-12 students, which is defined as `Free Meal Count (K-12)` divided by `Enrollment (K-12)`. We will then find the maximum of this rate for schools located in Alameda County.\n    * **Pseudo SQL:** SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM `frpm` AS `T1` INNER JOIN `schools` AS `T2` ON `T1`.`CDSCode` = `T2`.`CDSCode` WHERE `T2`.`County` = 'Alameda' AND `Enrollment (K-12)` > 0\n\n    * **Sub-question 1:** Calculate eligible free rate for K-12 students\n        * **Analysis:** This is calculated directly in the main query as part of the MAX function.\n        * **Pseudo SQL:** `Free Meal Count (K-12)` / `Enrollment (K-12)`\n\n    * **Sub-question 2:** Filter schools in Alameda County\n        * **Analysis:** This will filter the results based on the `County` column in the `schools` table.\n        * **Pseudo SQL:** `T2`.`County` = 'Alameda'\n\n    * **Sub-question 3:** Ensure enrollment is greater than 0\n        * **Analysis:** To avoid division by zero, we need to ensure that `Enrollment (K-12)` is greater than 0.\n        * **Pseudo SQL:** `Enrollment (K-12)` > 0\n\n**2. Assembling SQL:**\n\n* **Sub-question 1 (eligible free rate calculation):**\n    * **SQL:** `Free Meal Count (K-12)` / `Enrollment (K-12)`\n\n* **Sub-question 2 (filter schools in Alameda County):**\n    * **SQL:** `T2`.`County` = 'Alameda'\n\n* **Sub-question 3 (enrollment check):**\n    * **SQL:** `Enrollment (K-12)` > 0\n\n* **Main Question (highest eligible free rate):**\n    * **SQL:** SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM `frpm` AS `T1` INNER JOIN `schools` AS `T2` ON `T1`.`CDSCode` = `T2`.`CDSCode` WHERE `T2`.`County` = 'Alameda' AND `Enrollment (K-12)` > 0\n\n**3. Simplification and Optimization:**\n\n* The SQL query from step 2 is already efficient. It uses an `INNER JOIN` to combine the `frpm` and `schools` tables based on their relationship and applies the necessary filters directly in the `WHERE` clause.\n\n**Final Optimized SQL Query:**\n\n"
+            },
+            {
+                "chain_of_thought_reasoning": "",
+                "SQL": " SELECT MAX(CASE WHEN `Enrollment (K-12)` > 0 THEN `Free Meal Count (K-12)` / `Enrollment (K-12)` END) AS HighestEligibleFreeRate  FROM frpm AS T1  INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode  WHERE T2.County = 'Alameda' ",
+                "plan": "**Question**: What is the highest eligible free rate for K-12 students in the schools in Alameda County?  \n**Evidence**: Eligible free rate for K-12 = `Free Meal Count (K-12)` / `Enrollment (K-12)`\n\n**Query Plan**:\n\n**Preparation Steps:**\n1. Initialize the process: Set up the environment for query execution, including necessary variables and temporary storage.\n2. Open the schools and frpm tables: Access these tables to retrieve relevant data regarding schools in Alameda County.\n\n**Calculate Eligible Free Rate for K-12 Students:**\n1. Identify relevant columns: Focus on `Free Meal Count (K-12)` and `Enrollment (K-12)` from the `frpm` table.\n2. Filter by County: Ensure that only schools in Alameda County are considered by joining the `schools` table on the `CDSCode` and filtering for `County = 'Alameda'`.\n3. Calculate Free Rate: For each school, calculate the eligible free rate using the formula `Free Meal Count (K-12) / Enrollment (K-12)`.\n\n**Determine the Highest Eligible Free Rate:**\n1. Aggregate results: Use the `MAX()` function to find the highest eligible free rate from the calculated values.\n2. Prepare the result for output: Format the maximum free rate for presentation.\n\n**Deliver the Final Result:**\n1. Output the maximum eligible free rate: Present the highest free rate as the query result.\n2. Clean up resources: Close any open table connections and release temporary storage used during query execution.\n\n**Final Optimized SQL Query:**\n\n"
+            },
+            {
+                "chain_of_thought_reasoning": "",
+                "SQL": " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) AS highest_free_rate  FROM frpm AS T1  INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode  WHERE T2.County = 'Alameda' ",
+                "plan": "**Question**: What is the highest eligible free rate for K-12 students in the schools in Alameda County?  \n**Evidence**: Eligible free rate for K-12 = `Free Meal Count (K-12)` / `Enrollment (K-12)`\n\n**Query Plan**:\n\n** Preparation Steps: **\n1. Initialize the process: Set up the environment and prepare for query execution, including initializing variables and temporary storage.\n2. Open required tables: Access the `frpm` and `schools` tables to retrieve relevant data.\n\n** Filter Schools in Alameda County: **\n1. Scan the `schools` table: Retrieve all records from the `schools` table to identify schools located in Alameda County.\n2. Filter by County: Select only those rows where `County` = 'Alameda'.\n\n** Calculate Eligible Free Rate: **\n1. Join `frpm` and `schools`: Link the `frpm` table with the `schools` table using the `CDSCode` foreign key to associate schools with their free meal counts and enrollments.\n2. Calculate the eligible free rate: For each school, compute the eligible free rate using the formula: `Free Meal Count (K-12) / Enrollment (K-12)`.\n\n** Identify the Highest Eligible Free Rate: **\n1. Use the `MAX()` function: Aggregate the computed eligible free rates to find the maximum rate among the filtered records.\n\n** Finalize and Deliver the Result: **\n1. Prepare the result for output: Format the highest eligible free rate for presentation.\n2. Output the final result: Deliver the highest eligible free rate as the query result.\n3. Clean up resources: Close any open table connections and release temporary storage used during query execution.\n\n**Final Optimized SQL Query:**\n\n"
+            },
+            {
+                "chain_of_thought_reasoning": "",
+                "SQL": " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) AS HighestEligibleFreeRate FROM frpm WHERE `County Name` = 'Alameda' AND `Enrollment (K-12)` > 0 ",
+                "plan": "**Question**: What is the highest eligible free rate for K-12 students in the schools in Alameda County?  \n**Evidence**: Eligible free rate for K-12 = `Free Meal Count (K-12)` / `Enrollment (K-12)`\n\n**Query Plan**:\n\n** Preparation Steps: **\n1. Initialize the process: Set up the environment for query execution and prepare necessary variables.\n2. Open the frpm table: Access the frpm table to retrieve relevant data regarding free meal counts and enrollment figures.\n\n** Calculating Eligible Free Rate: **\n1. Scan the frpm table: Retrieve records from the frpm table to access the required columns for calculating the eligible free rate.\n2. Filter for Alameda County: Ensure that only records relevant to Alameda County are considered by checking the `County Name` column.\n3. Calculate the eligible free rate: For each record, compute the eligible free rate using the formula `Free Meal Count (K-12)` / `Enrollment (K-12)`.\n4. Handle potential division by zero: Ensure that only records with non-zero enrollment are used in the calculation to avoid division by zero errors.\n\n** Identify the Highest Eligible Free Rate: **\n1. Aggregate the results: Use the `MAX()` function to find the highest eligible free rate among all the calculated rates.\n2. Prepare the result for output: Format the highest eligible free rate for clarity.\n\n** Finalize and Deliver the Result: **\n1. Output the highest eligible free rate: Deliver the calculated highest rate as the query result.\n2. Clean up resources: Close any open table connections and release temporary storage used during query execution.\n\n**Final Optimized SQL Query:**\n\n"
+            },
+            {
+                "chain_of_thought_reasoning": "",
+                "SQL": " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) AS highest_free_rate FROM frpm WHERE `County Name` = 'Alameda' AND `Enrollment (K-12)` IS NOT NULL AND `Free Meal Count (K-12)` IS NOT NULL ",
+                "plan": "**Question**: What is the highest eligible free rate for K-12 students in the schools in Alameda County?  \n**Evidence**: Eligible free rate for K-12 = `Free Meal Count (K-12)` / `Enrollment (K-12)`\n\n**Query Plan**:\n\n** Preparation Steps: **\n1. Initialize the process: Set up the environment for query execution, including initializing variables and temporary storage.\n2. Open required tables: Open the `frpm` and `schools` tables to access relevant data.\n\n** Calculate Eligible Free Rate: **\n1. Scan the `frpm` table: Start reading rows from the `frpm` table to gather data on K-12 students.\n2. Filter for schools in Alameda County: Use the `County Name` column to select only the rows where `County Name` is 'Alameda'.\n3. Calculate the eligible free rate: For each relevant row, compute the eligible free rate using the formula `Free Meal Count (K-12)` / `Enrollment (K-12)`.\n4. Ensure valid counts: Make sure that both `Free Meal Count (K-12)` and `Enrollment (K-12)` are not NULL to avoid division errors.\n\n** Identify the Highest Eligible Free Rate: **\n1. Use MAX function: After calculating the eligible free rates, use the `MAX()` function to find the highest rate among the computed values.\n2. Prepare the result: Store the highest eligible free rate for output.\n\n** Finalize and Deliver the Result: **\n1. Prepare the result for output: Format the highest eligible free rate for presentation.\n2. Output the final result: Deliver the highest eligible free rate as the query result.\n3. Clean up resources: Close any open table connections and release temporary storage used during query execution.\n\n**Final Optimized SQL Query:**\n\n"
+            },
+            {
+                "chain_of_thought_reasoning": "",
+                "SQL": " SELECT MAX(`FRPM Count (K-12)` / `Enrollment (K-12)`) AS HighestEligibleFreeRate  FROM frpm AS T1  INNER JOIN schools AS T2 ON T1.`School Code` = T2.CDSCode  WHERE T2.County = 'Alameda' ",
+                "plan": "**Question**: What is the highest eligible free rate for K-12 students in the schools in Alameda County?  \n**Evidence**: Eligible free rate for K-12 = `Free Meal Count (K-12)` / `Enrollment (K-12)`\n\n**Query Plan**:\n\n**Preparation Steps:**\n1. Initialize the process: Set up the environment for query execution, including initializing variables and temporary storage.\n2. Open required tables: Access the `frpm` and `schools` tables to retrieve relevant data.\n\n**Filter by County:**\n1. Scan the `schools` table: Retrieve records from the `schools` table to filter schools located in Alameda County.\n2. Filter by County: Select only those rows where `County = 'Alameda'`.\n\n**Calculate Eligible Free Rate:**\n1. Join `frpm` and `schools` tables: Use `INNER JOIN` on the `CDSCode` to combine data from both tables.\n2. Calculate eligible free rate: For each school, compute the eligible free rate for K-12 students using the formula: `Free Meal Count (K-12)` / `Enrollment (K-12)`.\n\n**Determine the Highest Rate:**\n1. Use `MAX()` function: Find the maximum value of the eligible free rate calculated in the previous step.\n\n**Finalize and Deliver the Result:**\n1. Prepare the result for output: Format the highest eligible free rate for presentation.\n2. Output the final result: Deliver the highest rate as the query result.\n\n**Final Optimized SQL Query:**\n\n"
+            },
+            {
+                "chain_of_thought_reasoning": "",
+                "SQL": " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) AS highest_free_rate FROM frpm WHERE `County Name` = 'Alameda' AND `Enrollment (K-12)` > 0 ",
+                "plan": "**Question**: What is the highest eligible free rate for K-12 students in the schools in Alameda County?  \n**Evidence**: Eligible free rate for K-12 = `Free Meal Count (K-12)` / `Enrollment (K-12)`\n\n**Query Plan**:\n\n**Preparation Steps:**\n1. Initialize the process: Set up the environment for query execution, including necessary variables and temporary storage.\n2. Open the frpm table: Access the frpm table to retrieve relevant data about schools in Alameda County.\n\n**Calculate Eligible Free Rate:**\n1. Filter schools by county: Select only those records from the frpm table where the `County Name` is 'Alameda'.\n2. Extract relevant columns: Retrieve the `Free Meal Count (K-12)` and `Enrollment (K-12)` columns for the calculation.\n3. Calculate the eligible free rate: Compute the eligible free rate as `Free Meal Count (K-12) / Enrollment (K-12)` for each school.\n\n**Identify the Highest Eligible Free Rate:**\n1. Aggregate the results: Use the MAX() function to find the highest eligible free rate among the calculated rates.\n2. Handle potential NULL values: Ensure that any division by zero or NULL values are appropriately managed.\n\n**Finalize and Deliver the Result:**\n1. Prepare the result for output: Format the highest eligible free rate for clarity.\n2. Output the final result: Deliver the highest eligible free rate as the query result.\n3. Clean up resources: Close any open table connections and release temporary storage used during query execution.\n\n**Final Optimized SQL Query:**\n\n"
+            },
+            {
+                "chain_of_thought_reasoning": "",
+                "SQL": " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) AS HighestEligibleFreeRate  FROM frpm AS T1  INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode  WHERE T2.County = 'Alameda' AND `Enrollment (K-12)` IS NOT NULL ",
+                "plan": "**Question**: What is the highest eligible free rate for K-12 students in the schools in Alameda County?  \n**Evidence**: Eligible free rate for K-12 = `Free Meal Count (K-12)` / `Enrollment (K-12)`\n\n**Query Plan**:\n\n** Preparation Steps: **\n1. Initialize the process: Set up the environment for query execution, including initializing variables and temporary storage.\n2. Open required tables: Open the `frpm` and `schools` tables to access relevant data.\n\n** Filter and Identify Relevant Schools: **\n1. Scan the `schools` table: Start reading rows from the `schools` table to identify schools located in Alameda County.\n2. Filter by County: Select only those records where `County` is 'Alameda'.\n\n** Calculate Eligible Free Rate for K-12 Students: **\n1. Join `frpm` and `schools`: Use a JOIN operation to combine the `frpm` table with the `schools` table based on the `CDSCode`.\n2. Calculate eligible free rate: For each school, compute the eligible free rate using the formula: `Free Meal Count (K-12)` / `Enrollment (K-12)`.\n3. Handle potential NULL values: Ensure that the `Enrollment (K-12)` is not NULL to avoid division by zero.\n\n** Find the Highest Eligible Free Rate: **\n1. Aggregate the results: Use the `MAX()` function to find the maximum eligible free rate calculated from the previous step.\n2. Prepare the result for output: Format the final result for presentation, ensuring clarity and correctness.\n\n** Finalize and Deliver the Result: **\n1. Output the result: Deliver the highest eligible free rate as the query result.\n2. Clean up resources: Close any open table connections and release temporary storage used during query execution.\n\n**Final Optimized SQL Query:**\n\n"
+            },
+            {
+                "chain_of_thought_reasoning": "",
+                "SQL": " SELECT MAX(`FRPM Count (K-12)` / `Enrollment (K-12)`) AS highest_free_rate  FROM frpm AS F  INNER JOIN schools AS S ON F.CDSCode = S.CDSCode  WHERE S.County = 'Alameda' AND `Enrollment (K-12)` > 0 ",
+                "plan": "**Question**: What is the highest eligible free rate for K-12 students in the schools in Alameda County?  \n**Evidence**: Eligible free rate for K-12 = `Free Meal Count (K-12)` / `Enrollment (K-12)`\n\n**Query Plan**:\n\n**Preparation Steps:**\n1. Initialize the process: Set up the environment for query execution, including necessary variables and temporary storage.\n2. Open required tables: Access the `frpm` and `schools` tables to retrieve relevant data regarding free meal counts and enrollments.\n\n**Filter and Identify Relevant Schools:**\n1. Scan the `schools` table: Retrieve records from the `schools` table to identify schools located in Alameda County.\n2. Filter by County: Select only those rows where `County` is 'Alameda'.\n\n**Calculate Eligible Free Rate:**\n1. Join with the `frpm` table: Use the `CDSCode` to match schools with their corresponding free meal counts and enrollments.\n2. Calculate the eligible free rate: For each school, compute the eligible free rate using the formula: `Free Meal Count (K-12)` / `Enrollment (K-12)`.\n\n**Identify the Highest Eligible Free Rate:**\n1. Aggregate the results: Use the `MAX()` function to find the maximum eligible free rate among the schools that meet the criteria.\n2. Ensure valid calculations: Handle any potential division by zero by ensuring that `Enrollment (K-12)` is not zero.\n\n**Finalize and Deliver the Result:**\n1. Prepare the result for output: Format the final result to present the highest eligible free rate.\n2. Output the result: Deliver the highest eligible free rate as the query result.\n3. Clean up resources: Close any open table connections and release temporary storage used during query execution.\n\n**Final Optimized SQL Query:**\n\n"
+            },
+            {
+                "chain_of_thought_reasoning": "",
+                "SQL": " SELECT MAX((`Free Meal Count (K-12)` / `Enrollment (K-12)`)) AS highest_eligible_free_rate  FROM frpm AS T1  INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode  WHERE T2.County = 'Alameda' AND `Enrollment (K-12)` > 0 ",
+                "plan": "**Question**: What is the highest eligible free rate for K-12 students in the schools in Alameda County?  \n**Evidence**: Eligible free rate for K-12 = `Free Meal Count (K-12)` / `Enrollment (K-12)`\n\n**Query Plan**:\n\n** Preparation Steps: **\n1. Initialize the process: Set up the environment to execute the query, including initializing any necessary variables and temporary storage.\n2. Open required tables: Access the `frpm` and `schools` tables to retrieve relevant data.\n\n** Calculate Eligible Free Rate for K-12: **\n1. Filter schools in Alameda County: Use the `County` column in the `schools` table to select only those schools located in 'Alameda'.\n2. Join frpm and schools tables: Link the `frpm` table with the `schools` table using the `CDSCode` to ensure we are calculating the rate for the correct schools.\n3. Extract relevant columns: For each school, retrieve the `Free Meal Count (K-12)` and `Enrollment (K-12)` columns.\n4. Calculate the eligible free rate: Compute the eligible free rate using the formula: `Free Meal Count (K-12) / Enrollment (K-12)`.\n\n** Find the Highest Eligible Free Rate: **\n1. Identify the maximum eligible free rate: Use the `MAX()` function to determine the highest eligible free rate across all schools in Alameda County.\n\n** Finalize and Deliver the Result: **\n1. Prepare the result for output: Format the highest eligible free rate for presentation.\n2. Output the final result: Deliver the maximum eligible free rate as the query result.\n3. Clean up resources: Close any open table connections and release temporary storage used during query execution.\n\n**Final Optimized SQL Query:**\n\n"
+            },
+            {
+                "chain_of_thought_reasoning": "",
+                "SQL": " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`)  FROM frpm  WHERE `County Name` = 'Alameda' AND `Enrollment (K-12)` IS NOT NULL AND `Free Meal Count (K-12)` IS NOT NULL ",
+                "plan": "**Question**: What is the highest eligible free rate for K-12 students in the schools in Alameda County?  \n**Evidence**: Eligible free rate for K-12 = `Free Meal Count (K-12)` / `Enrollment (K-12)`\n\n**Query Plan**:\n\n**Preparation Steps:**\n1. Initialize the process: Set up the environment for query execution, including initializing variables and temporary storage.\n2. Open required tables: Access the `frpm` and `satscores` tables to retrieve relevant data.\n\n**Filter and Identify Relevant Schools:**\n1. Scan the `frpm` table: Retrieve records from the `frpm` table to identify schools located in Alameda County.\n2. Filter by County: Select only those rows where `County Name` = 'Alameda'.\n\n**Calculate Eligible Free Rate:**\n1. Extract relevant columns: For each school, retrieve `Free Meal Count (K-12)` and `Enrollment (K-12)`.\n2. Calculate eligible free rate: Compute the eligible free rate using the formula `Free Meal Count (K-12) / Enrollment (K-12)` for each school.\n3. Handle potential NULLs: Ensure that both `Free Meal Count (K-12)` and `Enrollment (K-12)` are not NULL before performing the division.\n\n**Determine the Highest Eligible Free Rate:**\n1. Aggregate the rates: Prepare to find the maximum eligible free rate calculated in the previous step.\n2. Identify the highest rate: Use the `MAX()` function to determine the highest eligible free rate among the schools in Alameda County.\n\n**Finalize and Deliver the Result:**\n1. Prepare the result for output: Format the highest eligible free rate for presentation.\n2. Output the final result: Deliver the highest eligible free rate as the query result.\n3. Clean up resources: Close any open table connections and release temporary storage used during query execution.\n\n**Final Optimized SQL Query:**\n\n"
+            }
+        ],
+        "status": "success",
+        "execution_time": 20.4
+    },
+    {
+        "tool_name": "revise",
+        "original_SQL_id": "generate_candidate",
+        "refined_SQL_id": "revise_1",
+        "candidates": [
+            {
+                "refined_query": " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM `frpm` WHERE `County Name` = 'Alameda' "
+            },
+            {
+                "refined_query": " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM `frpm` WHERE `County Name` = 'Alameda' "
+            },
+            {
+                "refined_query": " SELECT MAX(T1.`Free Meal Count (K-12)` / T1.`Enrollment (K-12)`) FROM frpm AS T1 INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode WHERE T2.County = 'Alameda' "
+            },
+            {
+                "refined_query": " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM frpm WHERE `County Name` = 'Alameda' "
+            },
+            {
+                "refined_query": " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM `frpm` WHERE `District Name` = 'Alameda' "
+            },
+            {
+                "refined_query": " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM `frpm` WHERE `County Name` = 'Alameda' "
+            },
+            {
+                "refined_query": " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM `frpm` WHERE `County Name` = 'Alameda' "
+            },
+            {
+                "refined_query": " SELECT MAX(T1.`Free Meal Count (K-12)` / T1.`Enrollment (K-12)`) FROM frpm AS T1 INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode WHERE T2.County = 'Alameda' "
+            },
+            {
+                "refined_query": " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM `schools` WHERE `County` = 'Alameda' AND `Enrollment (K-12)` > 0 "
+            },
+            {
+                "refined_query": " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM frpm AS T1 INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode WHERE T2.County = 'Alameda' AND `Enrollment (K-12)` > 0 "
+            },
+            {
+                "refined_query": " SELECT MAX(CASE WHEN `Enrollment (K-12)` > 0 THEN `Free Meal Count (K-12)` / `Enrollment (K-12)` END) AS HighestEligibleFreeRate  FROM frpm AS T1  INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode  WHERE T2.County = 'Alameda' "
+            },
+            {
+                "refined_query": " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) AS highest_free_rate  FROM frpm AS T1  INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode  WHERE T2.County = 'Alameda' "
+            },
+            {
+                "refined_query": " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) AS HighestEligibleFreeRate FROM frpm WHERE `County Name` = 'Alameda' AND `Enrollment (K-12)` > 0 "
+            },
+            {
+                "refined_query": " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) AS highest_free_rate FROM frpm WHERE `County Name` = 'Alameda' AND `Enrollment (K-12)` IS NOT NULL AND `Free Meal Count (K-12)` IS NOT NULL "
+            },
+            {
+                "refined_query": " SELECT MAX(`FRPM Count (K-12)` / `Enrollment (K-12)`) AS HighestEligibleFreeRate  FROM frpm AS T1  INNER JOIN schools AS T2 ON T1.`School Code` = T2.CDSCode  WHERE T2.County = 'Alameda' "
+            },
+            {
+                "refined_query": " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) AS highest_free_rate FROM frpm WHERE `County Name` = 'Alameda' AND `Enrollment (K-12)` > 0 "
+            },
+            {
+                "refined_query": " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) AS HighestEligibleFreeRate  FROM frpm AS T1  INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode  WHERE T2.County = 'Alameda' AND `Enrollment (K-12)` IS NOT NULL "
+            },
+            {
+                "refined_query": " SELECT MAX(`FRPM Count (K-12)` / `Enrollment (K-12)`) AS highest_free_rate  FROM frpm AS F  INNER JOIN schools AS S ON F.CDSCode = S.CDSCode  WHERE S.County = 'Alameda' AND `Enrollment (K-12)` > 0 "
+            },
+            {
+                "refined_query": " SELECT MAX((`Free Meal Count (K-12)` / `Enrollment (K-12)`)) AS highest_eligible_free_rate  FROM frpm AS T1  INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode  WHERE T2.County = 'Alameda' AND `Enrollment (K-12)` > 0 "
+            },
+            {
+                "refined_query": " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`)  FROM frpm  WHERE `County Name` = 'Alameda' AND `Enrollment (K-12)` IS NOT NULL AND `Free Meal Count (K-12)` IS NOT NULL "
+            }
+        ],
+        "status": "success",
+        "execution_time": 9.2
+    },
+    {
+        "tool_name": "generate_unit_test",
+        "unit_tests": {
+            "unit_test_generation": [
+                "Only the best answer from the set of candidates that most accurately answers the question, given the database schema and hint should pass this test."
+            ]
+        },
+        "candidates": [
+            " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM `frpm` WHERE `County Name` = 'Alameda' ",
+            " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM `frpm` WHERE `County Name` = 'Alameda' ",
+            " SELECT MAX(T1.`Free Meal Count (K-12)` / T1.`Enrollment (K-12)`) FROM frpm AS T1 INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode WHERE T2.County = 'Alameda' ",
+            " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM frpm WHERE `County Name` = 'Alameda' ",
+            " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM `frpm` WHERE `District Name` = 'Alameda' ",
+            " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM `frpm` WHERE `County Name` = 'Alameda' ",
+            " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM `frpm` WHERE `County Name` = 'Alameda' ",
+            " SELECT MAX(T1.`Free Meal Count (K-12)` / T1.`Enrollment (K-12)`) FROM frpm AS T1 INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode WHERE T2.County = 'Alameda' ",
+            " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM `schools` WHERE `County` = 'Alameda' AND `Enrollment (K-12)` > 0 ",
+            " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) FROM frpm AS T1 INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode WHERE T2.County = 'Alameda' AND `Enrollment (K-12)` > 0 ",
+            " SELECT MAX(CASE WHEN `Enrollment (K-12)` > 0 THEN `Free Meal Count (K-12)` / `Enrollment (K-12)` END) AS HighestEligibleFreeRate  FROM frpm AS T1  INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode  WHERE T2.County = 'Alameda' ",
+            " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) AS highest_free_rate  FROM frpm AS T1  INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode  WHERE T2.County = 'Alameda' ",
+            " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) AS HighestEligibleFreeRate FROM frpm WHERE `County Name` = 'Alameda' AND `Enrollment (K-12)` > 0 ",
+            " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) AS highest_free_rate FROM frpm WHERE `County Name` = 'Alameda' AND `Enrollment (K-12)` IS NOT NULL AND `Free Meal Count (K-12)` IS NOT NULL ",
+            " SELECT MAX(`FRPM Count (K-12)` / `Enrollment (K-12)`) AS HighestEligibleFreeRate  FROM frpm AS T1  INNER JOIN schools AS T2 ON T1.`School Code` = T2.CDSCode  WHERE T2.County = 'Alameda' ",
+            " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) AS highest_free_rate FROM frpm WHERE `County Name` = 'Alameda' AND `Enrollment (K-12)` > 0 ",
+            " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`) AS HighestEligibleFreeRate  FROM frpm AS T1  INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode  WHERE T2.County = 'Alameda' AND `Enrollment (K-12)` IS NOT NULL ",
+            " SELECT MAX(`FRPM Count (K-12)` / `Enrollment (K-12)`) AS highest_free_rate  FROM frpm AS F  INNER JOIN schools AS S ON F.CDSCode = S.CDSCode  WHERE S.County = 'Alameda' AND `Enrollment (K-12)` > 0 ",
+            " SELECT MAX((`Free Meal Count (K-12)` / `Enrollment (K-12)`)) AS highest_eligible_free_rate  FROM frpm AS T1  INNER JOIN schools AS T2 ON T1.CDSCode = T2.CDSCode  WHERE T2.County = 'Alameda' AND `Enrollment (K-12)` > 0 ",
+            " SELECT MAX(`Free Meal Count (K-12)` / `Enrollment (K-12)`)  FROM frpm  WHERE `County Name` = 'Alameda' AND `Enrollment (K-12)` IS NOT NULL AND `Free Meal Count (K-12)` IS NOT NULL "
+        ],
+        "status": "success",
+        "execution_time": 8.3
+    }
+]
