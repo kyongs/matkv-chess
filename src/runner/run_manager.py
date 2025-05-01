@@ -125,8 +125,8 @@ class RunManager:
                                     execution_history=[])
         thread_config["recursion_limit"] = 50
         for state_dict in team.stream(state_values, thread_config, stream_mode="values"):
-            print("STATE_DICT")
-            print(state_dict)
+            # print("STATE_DICT")
+            # print(state_dict)
             logger.log("________________________________________________________________________________________")
             continue
         system_state = SystemState(**state_dict)

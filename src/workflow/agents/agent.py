@@ -93,9 +93,9 @@ class Agent:
         messages += f"<agent>\n"
         
         llm_chain = get_llm_chain(engine_name=self.config["engine"], temperature=0)
-        print(llm_chain)
+        # print(llm_chain)
         response = call_engine(message=messages, engine=llm_chain)
-        print("Response: ", response)
+        # print("Response: ", response)
         return response
         
     def get_tools_description(self) -> str:
